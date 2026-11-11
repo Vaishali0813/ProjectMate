@@ -73,8 +73,7 @@ export const Header: React.FC = () => {
           >
             <div className="relative w-12 h-12 rounded-full overflow-hidden shadow-sm group-hover:scale-105 transition-transform duration-300 ring-2 ring-gold/40">
               <img
-                src="/logo.jpg"
-                alt="Project Mate Official Logo"
+                src={`${import.meta.env.BASE_URL}logo.jpg`} alt="Logo"
                 className="w-full h-full object-cover"
               />
             </div>

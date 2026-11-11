@@ -135,7 +135,7 @@ export const Hero: React.FC = () => {
                   <div className="relative z-10 my-auto text-center space-y-3">
                     <div className="mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br from-gold to-gold-dark p-0.5 shadow-lg">
                       <div className="w-full h-full bg-plum-950 rounded-2xl flex items-center justify-center">
-                        <img src="/logo.jpg" alt="Logo" className="w-12 h-12 object-contain rounded-full" />
+                        <img src={`${import.meta.env.BASE_URL}logo.jpg`} alt="Logo" className="w-12 h-12 object-contain rounded-full" />
                       </div>
                     </div>
                     <div>
