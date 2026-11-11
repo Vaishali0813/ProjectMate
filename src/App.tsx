@@ -15,7 +15,7 @@ export const App: React.FC = () => {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <BrowserRouter>
+        <BrowserRouter basename="/ProjectMate">
           <Routes>
             {/* Public Website Route */}
             <Route path="/" element={<HomePage />} />
