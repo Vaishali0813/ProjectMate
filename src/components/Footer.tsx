@@ -13,7 +13,7 @@ export const Footer: React.FC = () => {
     const targetId = href.substring(1);
     const targetEl = document.getElementById(targetId);
     if (targetEl) {
-      const headerOffset = 85;
+      const headerOffset = 80;
       const elementPosition = targetEl.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -24,70 +24,86 @@ export const Footer: React.FC = () => {
     }
   };
 
+  const services = [
+    'Research & Report Writing',
+    'Academic Consultation',
+    'Assignment Support',
+    'CV Preparation',
+    'Presentation Design',
+    'System Development',
+    'Graphic & UI Design',
+  ];
+
   return (
-    <footer className="bg-plum-900 text-warm-white relative overflow-hidden pt-16 pb-12 border-t-2 border-gold/40">
+    <footer className="bg-plum-900 text-warm-ivory relative overflow-hidden pt-12 pb-10 border-t-2 border-gold/40">
       {/* Decorative background glow */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-mauve/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 pb-10">
           {/* Col 1: Brand & Bio */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-3.5">
-              <div className="w-14 h-14 rounded-full overflow-hidden ring-2 ring-gold shadow-md bg-white">
-                <img src="/logo.jpg" alt="Project Mate" className="w-full h-full object-cover" />
+          <div className="space-y-3.5">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-gold shadow-md bg-white shrink-0">
+                <img
+                  src={`${import.meta.env.BASE_URL}logo.jpg`}
+                  alt="Project Mate Official Logo"
+                  className="w-full h-full object-cover"
+                  width="48"
+                  height="48"
+                />
               </div>
               <div>
-                <h3 className="font-serif text-2xl font-bold text-warm-white tracking-wide">
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-warm-ivory tracking-wide leading-none">
                   Project<span className="text-gold">Mate</span>
                 </h3>
-                <p className="text-xs uppercase tracking-wider text-gold font-medium">
+                <p className="text-[10px] uppercase tracking-wider text-gold font-medium mt-1">
                   Your Partner in Every Project.
                 </p>
               </div>
             </div>
-            <p className="text-sm text-plum-100/80 leading-relaxed pt-2">
+            <p className="text-xs sm:text-sm text-plum-100/80 leading-relaxed">
               Reliable, affordable, and personalised academic, creative, and technical support services in Sri Lanka. Bringing your project to life with excellence.
             </p>
             {/* Social Links */}
-            <div className="flex items-center gap-3 pt-2">
+            <div className="flex items-center gap-2.5 pt-1">
               <a
                 href={getStartedWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-plum-800 border border-gold/30 flex items-center justify-center text-gold hover:bg-gold hover:text-plum-950 transition-colors shadow-sm"
+                className="w-9 h-9 rounded-full bg-plum-800 border border-gold/30 flex items-center justify-center text-gold hover:bg-gold hover:text-plum-950 transition-colors shadow-sm"
                 aria-label="WhatsApp"
               >
-                <MessageCircle className="w-5 h-5" />
+                <MessageCircle className="w-4.5 h-4.5" />
               </a>
               <a
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-plum-800 border border-gold/30 flex items-center justify-center text-gold hover:bg-gold hover:text-plum-950 transition-colors shadow-sm"
+                className="w-9 h-9 rounded-full bg-plum-800 border border-gold/30 flex items-center justify-center text-gold hover:bg-gold hover:text-plum-950 transition-colors shadow-sm"
                 aria-label="Instagram"
               >
-                <InstagramIcon className="w-5 h-5" />
+                <InstagramIcon className="w-4.5 h-4.5" />
               </a>
               <a
                 href={FACEBOOK_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-plum-800 border border-gold/30 flex items-center justify-center text-gold hover:bg-gold hover:text-plum-950 transition-colors shadow-sm"
+                className="w-9 h-9 rounded-full bg-plum-800 border border-gold/30 flex items-center justify-center text-gold hover:bg-gold hover:text-plum-950 transition-colors shadow-sm"
                 aria-label="Facebook"
               >
-                <FacebookIcon className="w-5 h-5" />
+                <FacebookIcon className="w-4.5 h-4.5" />
               </a>
             </div>
           </div>
 
           {/* Col 2: Navigation Links */}
-          <div className="space-y-4">
-            <h4 className="font-serif text-lg font-semibold text-gold tracking-wide border-b border-gold/20 pb-2 inline-block">
+          <div className="space-y-3">
+            <h4 className="font-serif text-base sm:text-lg font-semibold text-gold tracking-wide border-b border-gold/20 pb-1.5 inline-block">
               Quick Navigation
             </h4>
-            <ul className="space-y-2.5 text-sm">
+            <ul className="space-y-2 text-xs sm:text-sm">
               <li>
                 <a
                   href="#home"
@@ -154,76 +170,64 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Col 3: Key Services */}
-          <div className="space-y-4">
-            <h4 className="font-serif text-lg font-semibold text-gold tracking-wide border-b border-gold/20 pb-2 inline-block">
-              Our Services
+          {/* Col 3: Services Offered */}
+          <div className="space-y-3">
+            <h4 className="font-serif text-base sm:text-lg font-semibold text-gold tracking-wide border-b border-gold/20 pb-1.5 inline-block">
+              Support Services
             </h4>
-            <ul className="space-y-2.5 text-sm text-plum-100/80">
-              <li>Research & Report Writing Support</li>
-              <li>Academic Consultation</li>
-              <li>Assignment Support & Guidance</li>
-              <li>CV Preparation & Redesign</li>
-              <li>Presentation Design</li>
-              <li>System Development</li>
-              <li>Graphic & UI Design</li>
+            <ul className="space-y-2 text-xs sm:text-sm text-plum-100/80">
+              {services.map((item, idx) => (
+                <li key={idx}>
+                  <a
+                    href="#services"
+                    onClick={(e) => handleLinkClick(e, '#services')}
+                    className="hover:text-gold transition-colors inline-block"
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Col 4: Contact & Feedback CTA */}
-          <div className="space-y-4">
-            <h4 className="font-serif text-lg font-semibold text-gold tracking-wide border-b border-gold/20 pb-2 inline-block">
-              Get in Touch
+          {/* Col 4: Contact & Help */}
+          <div className="space-y-3">
+            <h4 className="font-serif text-base sm:text-lg font-semibold text-gold tracking-wide border-b border-gold/20 pb-1.5 inline-block">
+              Direct Inquiries
             </h4>
-            <p className="text-sm text-plum-100/80">
-              Have a question or looking to begin? Reach out directly via WhatsApp for quick consultation.
+            <p className="text-xs sm:text-sm text-plum-100/80 leading-relaxed">
+              Have a question or need advice? We're available on WhatsApp for direct consultations.
             </p>
-            <div className="p-4 rounded-xl bg-plum-800/70 border border-gold/30 space-y-2">
-              <div className="text-xs text-gold uppercase tracking-wider font-semibold">WhatsApp Support</div>
+            <div className="pt-1">
               <a
                 href={getStartedWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-base font-bold text-warm-white hover:text-gold transition-colors flex items-center gap-2"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-plum-800 hover:bg-gold hover:text-plum-950 text-gold border border-gold/30 text-xs sm:text-sm font-semibold transition-all duration-300"
               >
-                <MessageCircle className="w-4 h-4 text-gold" />
-                {WHATSAPP_PHONE_DISPLAY}
+                <MessageCircle className="w-4 h-4" />
+                <span>{WHATSAPP_PHONE_DISPLAY}</span>
               </a>
             </div>
-            <a
-              href="#share-experience"
-              onClick={(e) => handleLinkClick(e, '#share-experience')}
-              className="inline-block text-xs uppercase tracking-wider font-semibold text-gold hover:text-warm-white underline underline-offset-4 transition-colors"
+            <div className="text-[11px] text-plum-100/60 pt-1">
+              Operating hours: Mon - Sun | 8:00 AM - 10:00 PM (IST)
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-6 border-t border-gold/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-plum-100/60">
+          <p>© {new Date().getFullYear()} Project Mate. All rights reserved. Dedicated to Academic & Creative Excellence.</p>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={scrollToTop}
+              className="flex items-center gap-1.5 text-xs text-gold hover:underline focus:outline-none"
+              aria-label="Back to top"
             >
-              Share Your Customer Experience &rarr;
-            </a>
+              <span>Back to Top</span>
+              <ArrowUp className="w-3.5 h-3.5" />
+            </button>
           </div>
-        </div>
-
-        {/* Divider with Champagne Gold detail */}
-        <div className="relative my-6">
-          <div className="border-t border-gold/25" />
-          <div className="absolute left-1/2 -top-2.5 -translate-x-1/2 bg-plum-900 px-3 text-gold">
-            ✦
-          </div>
-        </div>
-
-        {/* Bottom bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-plum-200/70 pt-2">
-          <p>© 2026 Project Mate. All Rights Reserved.</p>
-          <div className="flex items-center gap-2">
-            <span>Academic, Creative & Technical Solutions</span>
-            <span>•</span>
-            <span>Sri Lanka</span>
-          </div>
-          <button
-            onClick={scrollToTop}
-            className="flex items-center gap-1.5 text-gold hover:text-warm-white transition-colors p-2 rounded-lg bg-plum-800/50 hover:bg-plum-800 border border-gold/20"
-            aria-label="Scroll to top"
-          >
-            <span>Back to top</span>
-            <ArrowUp className="w-3.5 h-3.5" />
-          </button>
         </div>
       </div>
     </footer>

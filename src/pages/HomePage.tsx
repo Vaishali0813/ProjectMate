@@ -13,11 +13,11 @@ import { WhatsAppButton } from '../components/WhatsAppButton';
 
 export const HomePage: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-warm-white dark:bg-dark-bg text-plum-950 dark:text-warm-white selection:bg-mauve selection:text-white transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-warm-ivory dark:bg-dark-bg text-plum-950 dark:text-warm-ivory selection:bg-mauve selection:text-white transition-colors duration-300">
       {/* Sticky Header with Navigation, Theme Toggle, WhatsApp CTA */}
       <Header />
 
-      {/* Main Content Sections */}
+      {/* Main Content Sections with Seamless Transitions and Optimized Spacing */}
       <main className="flex-grow">
         {/* 1. Home / Hero Section */}
         <Hero />

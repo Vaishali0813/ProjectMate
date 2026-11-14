@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { MessageCircle, ArrowUpRight } from 'lucide-react';
+import { MessageCircle, ArrowUpRight, Sparkles } from 'lucide-react';
 import type { Service } from '../types';
 import { fetchServices } from '../lib/api';
 import {
@@ -13,6 +13,7 @@ import {
   FACEBOOK_URL,
 } from '../lib/whatsapp';
 import { InstagramIcon, FacebookIcon } from '../components/SocialIcons';
+import { SectionDivider } from '../components/SectionDivider';
 
 const contactSchema = z.object({
   fullName: z.string().min(2, 'Full name is required'),
@@ -76,54 +77,55 @@ export const ContactUs: React.FC = () => {
       deadline: values.deadline,
     });
 
-    // Open WhatsApp in a new tab so user can review and hit send
+    // Open WhatsApp in a new tab so user can review and hit send manually
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <section id="contact" className="py-20 sm:py-28 bg-warm-cream/40 dark:bg-dark-surface/40 transition-colors duration-300 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="pt-12 sm:pt-16 pb-0 bg-warm-blush dark:bg-dark-surface transition-colors duration-300 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-8 sm:mb-12">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-plum-50 dark:bg-dark-surface border border-gold/40 text-xs font-bold uppercase tracking-wider text-plum-900 dark:text-gold shadow-sm">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-2.5 sm:space-y-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-plum-50 dark:bg-dark-card border border-gold/40 text-xs font-bold uppercase tracking-wider text-plum-900 dark:text-gold shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-gold" />
             <span>Get In Touch</span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-plum-900 dark:text-warm-white">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-plum-900 dark:text-warm-ivory leading-tight">
             Let's Bring Your Ideas to Life.
           </h2>
 
-          <p className="text-base sm:text-lg text-plum-950/75 dark:text-warm-white/75 leading-relaxed font-normal">
+          <p className="text-base sm:text-lg text-plum-950/75 dark:text-warm-ivory/75 leading-relaxed font-normal">
             Have a project in mind? We're here to help you take the next step.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Left Column: Direct Contact Info & Socials (5 cols) */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="bg-white dark:bg-dark-card rounded-3xl p-8 border border-gold/30 dark:border-dark-border shadow-plum-subtle space-y-6">
-              <h3 className="font-serif text-2xl font-bold text-plum-900 dark:text-warm-white">
+          <div className="lg:col-span-5 space-y-5">
+            <div className="bg-white dark:bg-dark-card rounded-3xl p-6 sm:p-7 border border-gold/30 dark:border-dark-border shadow-plum-subtle space-y-5">
+              <h3 className="font-serif text-xl sm:text-2xl font-bold text-plum-900 dark:text-warm-ivory">
                 Contact Information
               </h3>
-              <p className="text-sm text-plum-950/70 dark:text-warm-white/70 leading-relaxed">
+              <p className="text-xs sm:text-sm text-plum-950/70 dark:text-warm-ivory/70 leading-relaxed">
                 Reach out to us directly through WhatsApp or connect across our official social channels.
               </p>
 
               {/* Direct WhatsApp Box */}
-              <div className="p-5 rounded-2xl bg-plum-50 dark:bg-dark-surface border border-gold/30 space-y-3">
+              <div className="p-4 sm:p-5 rounded-2xl bg-warm-ivory/60 dark:bg-dark-surface border border-gold/30 space-y-2.5">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-[#25D366] flex items-center justify-center">
-                    <MessageCircle className="w-5 h-5" />
+                  <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-[#25D366] flex items-center justify-center shrink-0">
+                    <MessageCircle className="w-5 h-5 fill-[#25D366]/20" />
                   </div>
                   <div>
-                    <div className="text-xs font-semibold text-plum-950/60 dark:text-warm-white/60">
+                    <div className="text-xs font-semibold text-plum-950/60 dark:text-warm-ivory/60">
                       Official WhatsApp
                     </div>
                     <a
                       href={getStartedWhatsAppUrl()}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-base font-bold text-plum-900 dark:text-gold hover:underline"
+                      className="text-base sm:text-lg font-bold text-plum-900 dark:text-gold hover:underline"
                     >
                       {WHATSAPP_PHONE_DISPLAY}
                     </a>
@@ -132,8 +134,8 @@ export const ContactUs: React.FC = () => {
               </div>
 
               {/* Social Channels */}
-              <div className="space-y-3 pt-2">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-plum-950/60 dark:text-warm-white/60">
+              <div className="space-y-2.5 pt-1">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-plum-950/60 dark:text-warm-ivory/60">
                   Follow Us Online
                 </h4>
                 <div className="grid grid-cols-2 gap-3">
@@ -141,7 +143,7 @@ export const ContactUs: React.FC = () => {
                     href={INSTAGRAM_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-xl bg-plum-50 dark:bg-dark-surface border border-gold/30 hover:border-gold text-plum-900 dark:text-warm-white hover:text-mauve flex items-center justify-between text-xs font-semibold transition-colors"
+                    className="p-3 rounded-xl bg-warm-ivory/60 dark:bg-dark-surface border border-gold/30 hover:border-gold text-plum-900 dark:text-warm-ivory hover:text-mauve flex items-center justify-between text-xs font-semibold transition-colors"
                   >
                     <span className="flex items-center gap-2">
                       <InstagramIcon className="w-4 h-4 text-pink-600" />
@@ -154,7 +156,7 @@ export const ContactUs: React.FC = () => {
                     href={FACEBOOK_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-xl bg-plum-50 dark:bg-dark-surface border border-gold/30 hover:border-gold text-plum-900 dark:text-warm-white hover:text-mauve flex items-center justify-between text-xs font-semibold transition-colors"
+                    className="p-3 rounded-xl bg-warm-ivory/60 dark:bg-dark-surface border border-gold/30 hover:border-gold text-plum-900 dark:text-warm-ivory hover:text-mauve flex items-center justify-between text-xs font-semibold transition-colors"
                   >
                     <span className="flex items-center gap-2">
                       <FacebookIcon className="w-4 h-4 text-blue-600" />
@@ -166,7 +168,7 @@ export const ContactUs: React.FC = () => {
               </div>
 
               {/* Location Badge */}
-              <div className="pt-2 border-t border-gold/20 text-xs text-plum-950/60 dark:text-warm-white/60">
+              <div className="pt-2 border-t border-gold/20 text-xs text-plum-950/60 dark:text-warm-ivory/60">
                 📍 Serving students and professionals across Sri Lanka & internationally.
               </div>
             </div>
@@ -174,28 +176,28 @@ export const ContactUs: React.FC = () => {
 
           {/* Right Column: Interactive WhatsApp Contact Form (7 cols) */}
           <div className="lg:col-span-7">
-            <div className="bg-white dark:bg-dark-card rounded-3xl p-6 sm:p-10 border-2 border-gold/40 dark:border-dark-border shadow-plum-subtle">
-              <div className="mb-6">
-                <h3 className="font-serif text-2xl font-bold text-plum-900 dark:text-warm-white mb-2">
+            <div className="bg-white dark:bg-dark-card rounded-3xl p-6 sm:p-8 border-2 border-gold/40 dark:border-dark-border shadow-plum-subtle">
+              <div className="mb-5">
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-plum-900 dark:text-warm-ivory mb-1.5">
                   Send a Direct Project Enquiry
                 </h3>
-                <p className="text-xs sm:text-sm text-plum-950/70 dark:text-warm-white/70">
+                <p className="text-xs sm:text-sm text-plum-950/70 dark:text-warm-ivory/70">
                   Fill in your project details below. Submitting will prepare and open WhatsApp with your message formatted for instant delivery.
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   {/* Full Name */}
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-plum-900 dark:text-warm-white mb-1.5">
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-plum-900 dark:text-warm-ivory mb-1.5">
                       Full Name <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
                       placeholder="Your full name"
                       {...register('fullName')}
-                      className={`w-full px-4 py-3 rounded-xl border text-sm transition-colors bg-warm-white/50 dark:bg-dark-surface dark:text-warm-white focus:outline-none focus:ring-2 focus:ring-gold ${
+                      className={`w-full px-4 py-2.5 rounded-xl border text-sm transition-colors bg-warm-ivory/50 dark:bg-dark-surface dark:text-warm-ivory focus:outline-none focus:ring-2 focus:ring-gold ${
                         errors.fullName
                           ? 'border-red-400 focus:border-red-400'
                           : 'border-gold/30 dark:border-dark-border'
@@ -208,14 +210,14 @@ export const ContactUs: React.FC = () => {
 
                   {/* Email Address */}
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-plum-900 dark:text-warm-white mb-1.5">
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-plum-900 dark:text-warm-ivory mb-1.5">
                       Email Address <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="email"
                       placeholder="your.email@example.com"
                       {...register('email')}
-                      className={`w-full px-4 py-3 rounded-xl border text-sm transition-colors bg-warm-white/50 dark:bg-dark-surface dark:text-warm-white focus:outline-none focus:ring-2 focus:ring-gold ${
+                      className={`w-full px-4 py-2.5 rounded-xl border text-sm transition-colors bg-warm-ivory/50 dark:bg-dark-surface dark:text-warm-ivory focus:outline-none focus:ring-2 focus:ring-gold ${
                         errors.email
                           ? 'border-red-400 focus:border-red-400'
                           : 'border-gold/30 dark:border-dark-border'
@@ -227,17 +229,17 @@ export const ContactUs: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   {/* WhatsApp Number */}
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-plum-900 dark:text-warm-white mb-1.5">
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-plum-900 dark:text-warm-ivory mb-1.5">
                       WhatsApp Number <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="tel"
                       placeholder="+94 7X XXX XXXX"
                       {...register('whatsappNumber')}
-                      className={`w-full px-4 py-3 rounded-xl border text-sm transition-colors bg-warm-white/50 dark:bg-dark-surface dark:text-warm-white focus:outline-none focus:ring-2 focus:ring-gold ${
+                      className={`w-full px-4 py-2.5 rounded-xl border text-sm transition-colors bg-warm-ivory/50 dark:bg-dark-surface dark:text-warm-ivory focus:outline-none focus:ring-2 focus:ring-gold ${
                         errors.whatsappNumber
                           ? 'border-red-400 focus:border-red-400'
                           : 'border-gold/30 dark:border-dark-border'
@@ -250,12 +252,12 @@ export const ContactUs: React.FC = () => {
 
                   {/* Required Service */}
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-plum-900 dark:text-warm-white mb-1.5">
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-plum-900 dark:text-warm-ivory mb-1.5">
                       Required Service <span className="text-red-500">*</span>
                     </label>
                     <select
                       {...register('service')}
-                      className={`w-full px-4 py-3 rounded-xl border text-sm transition-colors bg-warm-white/50 dark:bg-dark-surface dark:text-warm-white focus:outline-none focus:ring-2 focus:ring-gold ${
+                      className={`w-full px-4 py-2.5 rounded-xl border text-sm transition-colors bg-warm-ivory/50 dark:bg-dark-surface dark:text-warm-ivory focus:outline-none focus:ring-2 focus:ring-gold ${
                         errors.service
                           ? 'border-red-400 focus:border-red-400'
                           : 'border-gold/30 dark:border-dark-border'
@@ -278,41 +280,41 @@ export const ContactUs: React.FC = () => {
                 {/* Other service optional input */}
                 {selectedService === 'Other' && (
                   <div className="animate-in fade-in duration-200">
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-plum-900 dark:text-warm-white mb-1.5">
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-plum-900 dark:text-warm-ivory mb-1.5">
                       Specify Service
                     </label>
                     <input
                       type="text"
                       placeholder="e.g. Statistical Analysis Guidance"
                       {...register('otherService')}
-                      className="w-full px-4 py-3 rounded-xl border border-gold/30 dark:border-dark-border bg-warm-white/50 dark:bg-dark-surface text-sm dark:text-warm-white focus:outline-none focus:ring-2 focus:ring-gold"
+                      className="w-full px-4 py-2.5 rounded-xl border border-gold/30 dark:border-dark-border bg-warm-ivory/50 dark:bg-dark-surface text-sm dark:text-warm-ivory focus:outline-none focus:ring-2 focus:ring-gold"
                     />
                   </div>
                 )}
 
                 {/* Optional Preferred Deadline */}
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-plum-900 dark:text-warm-white mb-1.5">
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-plum-900 dark:text-warm-ivory mb-1.5">
                     Preferred Deadline (Optional)
                   </label>
                   <input
                     type="text"
                     placeholder="e.g. Within 2 weeks / End of this month"
                     {...register('deadline')}
-                    className="w-full px-4 py-3 rounded-xl border border-gold/30 dark:border-dark-border bg-warm-white/50 dark:bg-dark-surface text-sm dark:text-warm-white focus:outline-none focus:ring-2 focus:ring-gold"
+                    className="w-full px-4 py-2.5 rounded-xl border border-gold/30 dark:border-dark-border bg-warm-ivory/50 dark:bg-dark-surface text-sm dark:text-warm-ivory focus:outline-none focus:ring-2 focus:ring-gold"
                   />
                 </div>
 
                 {/* Project Description */}
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-plum-900 dark:text-warm-white mb-1.5">
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-plum-900 dark:text-warm-ivory mb-1.5">
                     Project Description <span className="text-red-500">*</span>
                   </label>
                   <textarea
-                    rows={4}
+                    rows={3}
                     placeholder="Please outline your topic, academic level or technical requirements..."
                     {...register('description')}
-                    className={`w-full px-4 py-3 rounded-xl border text-sm transition-colors bg-warm-white/50 dark:bg-dark-surface dark:text-warm-white focus:outline-none focus:ring-2 focus:ring-gold ${
+                    className={`w-full px-4 py-2.5 rounded-xl border text-sm transition-colors bg-warm-ivory/50 dark:bg-dark-surface dark:text-warm-ivory focus:outline-none focus:ring-2 focus:ring-gold ${
                       errors.description
                         ? 'border-red-400 focus:border-red-400'
                         : 'border-gold/30 dark:border-dark-border'
@@ -323,16 +325,16 @@ export const ContactUs: React.FC = () => {
                   )}
                 </div>
 
-                {/* Submit to WhatsApp Button */}
+                {/* WhatsApp Project Enquiry Button */}
                 <div className="pt-2">
                   <button
                     type="submit"
-                    className="w-full py-4 rounded-xl bg-plum-800 hover:bg-plum-900 text-warm-white dark:bg-gold dark:text-plum-950 dark:hover:bg-gold-light font-semibold text-sm sm:text-base shadow-plum-subtle hover:shadow-plum-hover transition-all duration-300 flex items-center justify-center gap-2 group"
+                    className="w-full py-3.5 px-6 rounded-xl bg-plum-700 hover:bg-plum-800 text-warm-ivory dark:bg-gold dark:text-plum-950 dark:hover:bg-gold-light font-semibold text-sm sm:text-base shadow-plum-subtle hover:shadow-plum-hover transition-all duration-300 flex items-center justify-center gap-2.5 group hover:scale-[1.01]"
                   >
                     <MessageCircle className="w-5 h-5 text-[#25D366] fill-[#25D366]" />
-                    <span>Open WhatsApp with Project Enquiry</span>
+                    <span>Open WhatsApp Project Enquiry</span>
                   </button>
-                  <p className="text-center text-[11px] text-plum-950/60 dark:text-warm-white/50 mt-2">
+                  <p className="text-center text-[11px] text-plum-950/60 dark:text-warm-ivory/50 mt-2">
                     Clicking will open WhatsApp directly with your message pre-formatted. You can review before sending.
                   </p>
                 </div>
@@ -341,6 +343,15 @@ export const ContactUs: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Smooth Curved Transition into Deep Plum Footer */}
+      <SectionDivider
+        variant="wave"
+        position="bottom"
+        fillClassName="text-plum-900"
+        secondaryFillClassName="text-gold/25"
+        className="h-8 sm:h-12 lg:h-14"
+      />
     </section>
   );
 };

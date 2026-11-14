@@ -51,19 +51,25 @@ export const AdminLayout: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen flex bg-warm-cream/30 dark:bg-dark-bg text-plum-950 dark:text-warm-white transition-colors duration-300">
+    <div className="min-h-screen flex bg-warm-ivory/60 dark:bg-dark-bg text-plum-950 dark:text-warm-ivory transition-colors duration-300">
       {/* Desktop Sidebar (Left) */}
-      <aside className="hidden lg:flex flex-col w-72 bg-plum-900 text-warm-white border-r border-gold/30 shrink-0">
+      <aside className="hidden lg:flex flex-col w-72 bg-plum-900 text-warm-ivory border-r border-gold/30 shrink-0">
         {/* Brand identity */}
         <div className="p-6 border-b border-gold/20 flex items-center gap-3">
           <div className="w-11 h-11 rounded-full overflow-hidden ring-2 ring-gold shadow-sm bg-white shrink-0">
-            <img src="/logo.jpg" alt="Logo" className="w-full h-full object-cover" />
+            <img
+              src={`${import.meta.env.BASE_URL}logo.jpg`}
+              alt="Project Mate Official Logo"
+              className="w-full h-full object-cover"
+              width="44"
+              height="44"
+            />
           </div>
           <div>
-            <h1 className="font-serif font-bold text-lg text-warm-white tracking-wide">
+            <h1 className="font-serif font-bold text-lg text-warm-ivory tracking-wide leading-none">
               Project<span className="text-gold">Mate</span>
             </h1>
-            <p className="text-[10px] font-semibold text-gold uppercase tracking-wider">
+            <p className="text-[10px] font-semibold text-gold uppercase tracking-wider mt-1">
               Administration Portal
             </p>
           </div>
@@ -81,7 +87,7 @@ export const AdminLayout: React.FC = () => {
                   `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
                     isActive
                       ? 'bg-plum-800 text-gold border border-gold/40 shadow-sm font-semibold'
-                      : 'text-plum-100/80 hover:bg-plum-800/50 hover:text-warm-white'
+                      : 'text-plum-100/80 hover:bg-plum-800/50 hover:text-warm-ivory'
                   }`
                 }
               >
@@ -99,16 +105,12 @@ export const AdminLayout: React.FC = () => {
             target="_blank"
             className="flex items-center justify-between px-4 py-2.5 rounded-xl text-xs font-semibold text-plum-100/80 hover:bg-plum-800/60 hover:text-gold transition-colors"
           >
-            <span className="flex items-center gap-2">
-              <ExternalLink className="w-4 h-4" />
-              View Public Website
-            </span>
-            <span>&rarr;</span>
+            <span>View Public Website</span>
+            <ExternalLink className="w-4 h-4" />
           </Link>
-
           <button
             onClick={handleLogout}
-            className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs font-semibold text-red-300 hover:bg-red-950/40 hover:text-red-200 transition-colors"
+            className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs font-semibold text-red-300 hover:bg-red-950/40 transition-colors"
           >
             <LogOut className="w-4 h-4" />
             <span>Sign Out</span>
@@ -116,14 +118,14 @@ export const AdminLayout: React.FC = () => {
         </div>
       </aside>
 
-      {/* Main Container */}
+      {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Top Header */}
         <header className="sticky top-0 z-30 bg-white/90 dark:bg-dark-card/90 backdrop-blur-md border-b border-gold/30 dark:border-dark-border px-4 sm:px-8 py-3.5 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <button
               onClick={() => setMobileSidebarOpen(true)}
-              className="lg:hidden p-2 rounded-lg text-plum-900 dark:text-warm-white hover:bg-plum-50 dark:hover:bg-dark-hover"
+              className="lg:hidden p-2 rounded-lg text-plum-900 dark:text-warm-ivory hover:bg-plum-50 dark:hover:bg-dark-hover"
               aria-label="Open sidebar menu"
             >
               <Menu className="w-5 h-5" />
@@ -146,11 +148,11 @@ export const AdminLayout: React.FC = () => {
 
             {/* Admin User Badge */}
             <div className="flex items-center gap-2.5 pl-3 border-l border-gold/30">
-              <div className="w-8 h-8 rounded-full bg-plum-800 text-gold font-bold text-xs flex items-center justify-center">
+              <div className="w-8 h-8 rounded-full bg-plum-800 text-gold font-bold text-xs flex items-center justify-center ring-2 ring-gold/30">
                 A
               </div>
               <div className="hidden sm:block text-left">
-                <div className="text-xs font-bold text-plum-900 dark:text-warm-white truncate max-w-[150px]">
+                <div className="text-xs font-bold text-plum-900 dark:text-warm-ivory truncate max-w-[150px]">
                   {user?.email || 'Administrator'}
                 </div>
                 <div className="text-[10px] text-mauve dark:text-gold font-medium uppercase tracking-wider">
@@ -168,13 +170,19 @@ export const AdminLayout: React.FC = () => {
               className="fixed inset-0 bg-black/50 backdrop-blur-xs"
               onClick={() => setMobileSidebarOpen(false)}
             />
-            <div className="relative w-72 max-w-full bg-plum-900 text-warm-white flex flex-col z-10 shadow-2xl">
+            <div className="relative w-72 max-w-full bg-plum-900 text-warm-ivory flex flex-col z-10 shadow-2xl">
               <div className="p-5 border-b border-gold/20 flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
                   <div className="w-9 h-9 rounded-full overflow-hidden ring-2 ring-gold bg-white">
-                    <img src="/logo.jpg" alt="Logo" className="w-full h-full object-cover" />
+                    <img
+                      src={`${import.meta.env.BASE_URL}logo.jpg`}
+                      alt="Project Mate Official Logo"
+                      className="w-full h-full object-cover"
+                      width="36"
+                      height="36"
+                    />
                   </div>
-                  <span className="font-serif font-bold text-base text-warm-white">
+                  <span className="font-serif font-bold text-base text-warm-ivory">
                     Project<span className="text-gold">Mate</span>
                   </span>
                 </div>
@@ -198,7 +206,7 @@ export const AdminLayout: React.FC = () => {
                         `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
                           isActive
                             ? 'bg-plum-800 text-gold border border-gold/40 font-semibold'
-                            : 'text-plum-100/80 hover:bg-plum-800/50 hover:text-warm-white'
+                            : 'text-plum-100/80 hover:bg-plum-800/50 hover:text-warm-ivory'
                         }`
                       }
                     >

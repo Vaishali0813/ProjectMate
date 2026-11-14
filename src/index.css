@@ -3,13 +3,24 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --color-primary-burgundy: #560C38;
+    --color-deep-plum: #300B25;
+    --color-muted-mauve: #A87291;
+    --color-champagne-gold: #E9C9A0;
+    --color-warm-ivory: #FFFAF6;
+    --color-soft-blush: #F8ECEC;
+    --color-dark-card: #43132F;
+  }
+
   html {
     scroll-behavior: smooth;
   }
   
   body {
-    @apply bg-warm-white text-plum-950 dark:bg-dark-bg dark:text-warm-white;
+    @apply bg-warm-ivory text-plum-950 dark:bg-dark-bg dark:text-warm-ivory;
     min-height: 100vh;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
   /* Custom scrollbar */
@@ -18,35 +29,35 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #FAF1E8;
+    background: #F8ECEC;
   }
 
   .dark ::-webkit-scrollbar-track {
-    background: #140210;
+    background: #24071B;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #A66B91;
+    background: #A87291;
     border-radius: 5px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #470735;
+    background: #560C38;
   }
 
   .dark ::-webkit-scrollbar-thumb:hover {
-    background: #D8B388;
+    background: #E9C9A0;
   }
 }
 
 @layer utilities {
   .text-gold-gradient {
-    background: linear-gradient(135deg, #F1D5B5 0%, #D8B388 100%);
+    background: linear-gradient(135deg, #E9C9A0 0%, #CCA576 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .border-gold-subtle {
-    border-color: rgba(241, 213, 181, 0.45);
+    border-color: rgba(233, 201, 160, 0.45);
   }
 }
